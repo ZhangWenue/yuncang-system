@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;/* 去掉列表元素（ul、ol）的默认标记 */
+  text-decoration: none; /* 去掉所有元素的文本装饰（例如，去掉链接的下划线） */
+  outline: none;/* 去掉元素的轮廓线 */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
