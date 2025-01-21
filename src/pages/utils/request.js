@@ -6,11 +6,14 @@ const instance = axios.create({
   timeout: 3000 // 设置超时时间，单位为ms
 });
  
-// 请求拦截器
+// 请求拦截器，拦截要发送的请求，即config这个对象，在请求发送之前进行一些操作
 instance.interceptors.request.use(config => {
-  config.headers['Authorization'] = localStorage.getItem('token'); 
-  // 设置请求头部分，这里举例使用了localStorage存储的token作为身份标识
-  // 如果后端不好写直接删掉就好了QwQ
+  if(localStorage.getItem('token')) {
+    config.headers['Authorization'] = localStorage.getItem('token'); 
+  }
+  
+  // 设置请求头部分，这里使用了localStorage存储的token作为身份标识
+  // 如果后端不好写直接删掉就好了QwQ，最好写一下吧，别到时候李勇问了再干瞪眼
   return config;
 }, error => {
   console.log(error);
