@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Login.scss';
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import MyNotification from "../../components/MyNotification/MyNotification";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () =>  {
   const [notiMsg, setNotiMsg] = useState({type:'', description:''})
-  const navigator = useNavigate()
+  const navigate = useNavigate()
   const [form] = Form.useForm()// 绑定表单
 
   const onFinish = async (values) => {// values即为表单结果（对象）
@@ -16,7 +16,7 @@ const Login = () =>  {
       if (res.data.success) { // 登录成功
         localStorage.setItem('token', res.data.token); // 在浏览器的 localStorage 里缓存 token
         message.success(res.data.msg); // 显示成功消息
-        navigator('/layout'); // 跳转到首页
+        navigate('/layout'); // 跳转到首页
       } else {
         message.error(res.data.msg); // 显示错误消息
       }
@@ -30,6 +30,12 @@ const Login = () =>  {
     console.log('Failed:', errorInfo);
   };
 
+
+  useEffect(() => {
+   if(localStorage.getItem('token')){
+    navigate('/layout')
+   } 
+  }, [])
 
   return (
     <div className="login">

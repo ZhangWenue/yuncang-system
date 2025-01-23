@@ -1,0 +1,24 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  .header-menu{
+    padding: 0 10px;
+  }
+}
+
+.demo-logo-vertical {
+  text-align: center;
+  margin-top: 6px;
+  overflow: hidden;
+  .logo {
+      height: 48px;
+      display: block;
+      margin: 6px auto
+  }
+  span {
+    white-space: nowrap;
+    overflow: hidden; 
+  }
+}
+
