@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   DesktopOutlined,
   FileOutlined,
@@ -12,7 +12,7 @@ import {
 import logo from '../Layout/logo.png';
 import './Layout.scss';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import MyModal from '../../components/MyModal/MyModal';
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -63,8 +63,8 @@ const menuItems = [
             key: 'setting:1',
           },
           {
-            label: 'Option 2',
-            key: 'setting:2',
+            label: '用户管理',
+            key: 'admin',
           },
         ],
       },
@@ -73,8 +73,8 @@ const menuItems = [
         label: 'Item 2',
         children: [
           {
-            label: 'Option 3',
-            key: 'setting:3',
+            label: '角色管理',
+            key: 'role',
           },
           {
             label: '退出登录',
@@ -100,11 +100,31 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   if(!localStorage.getItem('token')){
+  //     navigate('/login')
+  //   }
+  // }, [])
+
   const onClickMenu = (e) => {
     setCurrent(e.key);
-    if (e.key === 'exit') {
-      setIsModalOpen(true); // 打开 Modal 确认退出
+    switch(e.key) {
+      case 'exit':
+        setIsModalOpen(true); // 打开 Modal 确认退出
+        break
+      
+      case 'role':
+        navigate('role')
+        break
+      
+      case 'admin': 
+        navigate('admin')
+        break
+      
+      default:
+        break
     }
+
   };
 
   const handleModalClose = (confirm) => {
@@ -188,7 +208,9 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            Bill is a cat.
+            <Outlet>
+
+            </Outlet>
           </div>
         </Content>
 

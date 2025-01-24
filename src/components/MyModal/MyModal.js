@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'; // 修改此处，确保只使用 Reac
 import { Modal } from 'antd';
 import useStore from './store';
 
-const MyModal = ({ title, content, isModalOpen, sendChildMsg }) => {// title,content,isModalOpen是父组件传过来的参数，childMsg是向父组件传递参数的函数
+const MyModal = ({ title = '对话框标题', content = '对话框内容', isModalOpen, sendChildMsg }) => {
+  // title,content,isModalOpen是父组件传过来的参数，childMsg是向父组件传递参数的函数
   const setTitle = useStore((state) => state.setTitle);
   const setContent = useStore((state) => state.setContent);
   const setIsModalOpen = useStore((state) => state.setIsModalOpen); // 从 Zustand 获取 setIsModalOpen 方法
