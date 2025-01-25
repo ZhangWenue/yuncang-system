@@ -30,6 +30,8 @@ const MyModal = ({ title = '对话框标题', content = '对话框内容', isMod
         open={isModalOpen} // 这里使用从 Zustand 获取的状态
         onOk={handleOk}
         onCancel={handleCancel}
+        okText="确认"  // 设置确认按钮文本
+        cancelText="取消"  // 设置取消按钮文本
       >
         <p>{content}</p> {/* 直接使用传入的内容 */}
       </Modal>

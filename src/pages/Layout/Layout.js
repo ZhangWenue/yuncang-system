@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   DesktopOutlined,
   FileOutlined,
@@ -56,11 +56,11 @@ const menuItems = [
     children: [
       {
         type: 'group',
-        label: 'Item 1',
+        label: '业务管理',
         children: [
           {
-            label: 'Option 1',
-            key: 'setting:1',
+            label: '角色管理',
+            key: 'role',
           },
           {
             label: '用户管理',
@@ -70,11 +70,11 @@ const menuItems = [
       },
       {
         type: 'group',
-        label: 'Item 2',
+        label: '此账户',
         children: [
           {
-            label: '角色管理',
-            key: 'role',
+            label: '个人中心',
+            key: 'mine',
           },
           {
             label: '退出登录',
@@ -105,23 +105,32 @@ const App = () => {
   //     navigate('/login')
   //   }
   // }, [])
+  // 路由重定向，当没有登录token时自动转到登陆页面
 
   const onClickMenu = (e) => {
-    setCurrent(e.key);
+    
     switch(e.key) {
       case 'exit':
         setIsModalOpen(true); // 打开 Modal 确认退出
         break
       
       case 'role':
+        setCurrent(e.key);
         navigate('role')
         break
       
       case 'admin': 
+        setCurrent(e.key);
         navigate('admin')
         break
       
+      case 'mine':
+        setCurrent(e.key);
+        navigate('mine')
+        break
+      
       default:
+        setCurrent(e.key);
         break
     }
 
@@ -215,7 +224,7 @@ const App = () => {
         </Content>
 
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          YunCang ©{new Date().getFullYear()} Created by NWPU Team 30 
         </Footer>
       </Layout>
     </Layout>

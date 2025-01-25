@@ -1,8 +1,10 @@
-import { createBrowserRouter, BrowserRouter, Router, Route, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from "./pages/Layout/Layout";
 import Login from "./pages/Login/Login";
 import Role from './pages/Role/role';
 import Admin from './pages/Admin/admin';
+import Mine from './pages/Admin/Mine/Mine';
+
 const router = createBrowserRouter([
   {
     path:'/login',
@@ -19,7 +21,11 @@ const router = createBrowserRouter([
       {
         path: 'admin',
         element: <Admin />
-      }
+      },
+      {
+        path: 'mine',
+        element: <Mine />
+      },
     ]
   },
 ])
